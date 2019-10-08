@@ -26,7 +26,11 @@ func Hello(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 }
 
 func getFib(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	json.NewEncoder(w).Encode(fibonacci(ps.ByName("number")))
+	s, err := fibonacci(ps.ByName("number"))
+	json.NewEncoder(w).Encode(s)
+	if err != nil {
+		fmt.Fprintf(w, "There is an error, %s!\n", err)
+	}
 }
 
 func main() {
