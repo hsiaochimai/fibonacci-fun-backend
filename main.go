@@ -37,6 +37,6 @@ func main() {
 	router := httprouter.New()
 	router.GET("/api", Index)
 	router.GET("/api/hello/:name", Hello)
-	router.GET("/api/fib/:number", getFib)
+	router.GET("/api/fibonacci/:number", getFib)
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
